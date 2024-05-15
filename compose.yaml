@@ -1,10 +1,22 @@
+version: '3'
+
 services:
-  mysql:
-    image: 'mysql:latest'
-    environment:
-      - 'MYSQL_DATABASE=mydatabase'
-      - 'MYSQL_PASSWORD=secret'
-      - 'MYSQL_ROOT_PASSWORD=verysecret'
-      - 'MYSQL_USER=myuser'
+  post-message-micro-service:
+    image: postservice
+    container_name: PostMessageMicroService
+    build: .
     ports:
-      - '3306'
+      - "8090:8080"
+    environment:
+      - DATABASE_URL=jdbc:mysql://mysql:3306/messages
+    restart: on-failure
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=messages
+    ports:
+      - "3306:3306"
