@@ -16,7 +16,7 @@ public class ApplicationConfiguration {
         dataSource.setUsername("root");
         dataSource.setPassword("secret");
         dataSource.setUrl(
-                "jdbc:mysql://localhost:3306/myDb?createDatabaseIfNotExist=true");
+                "jdbc:mysql://mysql:3306/myDb?createDatabaseIfNotExist=true");
 
         return dataSource;
     }
