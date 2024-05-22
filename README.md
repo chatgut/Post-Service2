@@ -13,7 +13,6 @@ Running with Docker Compose
     Create a file named docker-compose.yaml in your desired directory and add the following content:
 
 
-version: '3.8'
 
 services:
 postservice:
